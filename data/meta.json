@@ -1,0 +1,52 @@
+{
+  "asOf": "2026-10-22",
+  "asOfLabel": "Thu Oct 22, 2026 (America/Los_Angeles)",
+  "updatedAt": "2026-10-23T09:45:00-07:00",
+  "riskProfile": "Medium",
+  "priorityHorizons": [
+    "6m",
+    "12m",
+    "24m",
+    "36m"
+  ],
+  "owner": "Gary Aires",
+  "disclaimer": "Research support only \u2014 not personalized investment advice. Verify live quotes, position sizes, and tax lots before trading.",
+  "portfolios": [
+    {
+      "id": "OTW",
+      "danelfinId": 32703,
+      "type": "watchlist",
+      "gain": "78.94%",
+      "names": 25
+    },
+    {
+      "id": "OTW #2",
+      "danelfinId": 91134,
+      "type": "watchlist",
+      "gain": "6.31%",
+      "names": 15
+    },
+    {
+      "id": "Jette",
+      "danelfinId": 32707,
+      "type": "watchlist",
+      "gain": "78.42%",
+      "names": 10
+    },
+    {
+      "id": "SWB",
+      "danelfinId": 32651,
+      "type": "watchlist",
+      "gain": "64.92%",
+      "names": 18
+    },
+    {
+      "id": "NEW",
+      "danelfinId": 32195,
+      "type": "live",
+      "gain": "65.63%",
+      "names": 3,
+      "value": "~$4.71K"
+    }
+  ]
+}
