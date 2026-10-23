@@ -3,107 +3,86 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Danelfin Multi-Portfolio Dashboard — Gary Aires</title>
-  <meta name="description" content="Personal multi-horizon equity research dashboard across OTW, OTW #2, Jette, SWB, and NEW portfolios." />
-  <link rel="stylesheet" href="styles.css" />
+  <title>Danelfin Dashboards — Gary Aires</title>
+  <meta name="description" content="Personal Danelfin multi-horizon research dashboards for Gary Aires." />
+  <link rel="stylesheet" href="assets/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .hub-card {
+      display: block;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.3rem;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: border-color .15s, transform .15s;
+    }
+    .hub-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .hub-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+    .hub-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .hub-card .linkish {
+      margin-top: 0.85rem;
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
       <div>
         <p class="eyebrow">Gary Aires · Personal research</p>
-        <h1>Danelfin Multi-Portfolio Dashboard</h1>
-        <p class="subtitle">OTW · OTW #2 · Jette · SWB · NEW — Medium risk · Priority horizons 6 / 12 / 24 / 36 months</p>
-      </div>
-      <div class="header-meta">
-        <div class="asof" id="asOf">As of —</div>
-        <div class="quote-status" id="quoteStatus">Quotes: loading…</div>
+        <h1>Danelfin Portfolio Dashboards</h1>
+        <p class="subtitle">Three shareable views — Medium risk · Priority horizons 6 / 12 / 24 / 36 months</p>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="takeaways" id="takeaways" aria-label="Executive takeaways"></section>
-
-    <section class="controls" aria-label="Filters">
-      <div class="control">
-        <label for="bookFilter">Portfolio</label>
-        <select id="bookFilter">
-          <option value="all">All books</option>
-          <option value="OTW">OTW</option>
-          <option value="OTW #2">OTW #2</option>
-          <option value="Jette">Jette</option>
-          <option value="SWB">SWB</option>
-          <option value="NEW">NEW (live)</option>
-        </select>
-      </div>
-      <div class="control">
-        <label for="actionFilter">Action</label>
-        <select id="actionFilter">
-          <option value="all">All actions</option>
-          <option value="Buy">Buy</option>
-          <option value="Accumulate">Accumulate</option>
-          <option value="Hold">Hold</option>
-          <option value="Reduce">Reduce</option>
-          <option value="Watch">Watch</option>
-          <option value="Avoid">Avoid</option>
-          <option value="Overlap">Overlap only</option>
-        </select>
-      </div>
-      <div class="control">
-        <label for="horizonFilter">Focus horizon</label>
-        <select id="horizonFilter">
-          <option value="primary">Priority blend (6–36m)</option>
-          <option value="h6m">6 months</option>
-          <option value="h12m">12 months</option>
-          <option value="h24m">24 months</option>
-          <option value="h36m">36 months</option>
-          <option value="h3m">3 months</option>
-        </select>
-      </div>
-      <div class="control grow">
-        <label for="search">Search</label>
-        <input id="search" type="search" placeholder="Ticker or notes…" autocomplete="off" />
-      </div>
-      <div class="control actions-row">
-        <button type="button" id="refreshQuotes" class="btn secondary">Refresh quotes</button>
-        <a class="btn secondary" id="downloadCsv" href="#" download="actions.csv">Download CSV</a>
-      </div>
-    </section>
-
-    <section class="stats" id="stats"></section>
-
-    <section class="table-wrap">
-      <table id="actionsTable">
-        <thead>
-          <tr>
-            <th data-sort="ticker">Ticker</th>
-            <th data-sort="books">Books</th>
-            <th data-sort="focus">Focus</th>
-            <th data-sort="h6m">6m</th>
-            <th data-sort="h12m">12m</th>
-            <th data-sort="h24m">24m</th>
-            <th data-sort="h36m">36m</th>
-            <th data-sort="conviction">Conv.</th>
-            <th data-sort="weight">Weight</th>
-            <th data-sort="price">Last</th>
-            <th data-sort="notes">Notes</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-      <p class="empty" id="empty" hidden>No rows match these filters.</p>
+    <section class="hub-grid" aria-label="Dashboard links">
+      <a class="hub-card" href="otw/">
+        <h2>OTW &amp; OTW #2</h2>
+        <p>Core + satellite watchlists. Filter by book, action, and horizon; overlap rows flagged.</p>
+        <div class="linkish">Open dashboard →</div>
+      </a>
+      <a class="hub-card" href="swb/">
+        <h2>SWB</h2>
+        <p>Standalone SWB watchlist with multi-horizon actions and CSV download.</p>
+        <div class="linkish">Open dashboard →</div>
+      </a>
+      <a class="hub-card" href="new-jette/">
+        <h2>NEW &amp; Jette</h2>
+        <p>Live NEW book plus Jette factory sleeve — takeaways and filterable table.</p>
+        <div class="linkish">Open dashboard →</div>
+      </a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p><strong>Disclaimer:</strong> Research support only — not personalized investment advice. Verify live quotes, position sizes, and tax lots before trading. Past performance and AI scores are not guarantees of future results.</p>
-    <p class="muted">Data files: <a href="data/actions.json">actions.json</a> · <a href="data/meta.json">meta.json</a> · Quotes via Yahoo Finance (unofficial; may fail soft). Hosted on GitHub Pages for personal sharing.</p>
+    <p><strong>Disclaimer:</strong> Research support only — not personalized investment advice. Verify live quotes, position sizes, and tax lots before trading.</p>
+    <p class="muted">Hosted on GitHub Pages. Weekly refresh overwrites <code>data/*-actions.json</code> and <code>data/meta.json</code>.</p>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>

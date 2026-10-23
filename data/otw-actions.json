@@ -1,0 +1,674 @@
+{
+  "actions": [
+    {
+      "ticker": "NVDA",
+      "books": [
+        "OTW",
+        "OTW #2"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "High",
+      "weight": "3.5\u20135.0%",
+      "notes": "Overlap; stagger into mid-Nov print",
+      "overlap": true,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "UNH",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Buy",
+      "h60m": "Hold",
+      "conviction": "High",
+      "weight": "3.0\u20134.5%",
+      "notes": "OTW #2; AI 8",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "JPM",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Buy",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "High",
+      "weight": "3.0\u20134.0%",
+      "notes": "OTW; AI 10",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "GOOGL",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Buy",
+      "h60m": "Buy",
+      "conviction": "High",
+      "weight": "3.0\u20134.5%*",
+      "notes": "OTW; pick one Alphabet class",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "GOOG",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Buy",
+      "h60m": "Buy",
+      "conviction": "High",
+      "weight": "(see GOOGL)",
+      "notes": "OTW #2; do not double Alphabet",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "MSFT",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Buy",
+      "h60m": "Buy",
+      "conviction": "High",
+      "weight": "3.0\u20134.0%",
+      "notes": "OTW; AI score understates quality",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "BAC",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Accumulate",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med-High",
+      "weight": "2.0\u20133.0%",
+      "notes": "OTW; AI 10",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "MU",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Hold",
+      "h48m": "Reduce",
+      "h60m": "Reduce",
+      "conviction": "Med-High",
+      "weight": "2.0\u20133.5%",
+      "notes": "OTW; size-cap cycle risk",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "AMZN",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Buy",
+      "h60m": "Hold",
+      "conviction": "Med-High",
+      "weight": "2.5\u20133.5%",
+      "notes": "OTW; add on weakness",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "LLY",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Accumulate",
+      "h24m": "Accumulate",
+      "h36m": "Buy",
+      "h48m": "Buy",
+      "h60m": "Buy",
+      "conviction": "Med-High",
+      "weight": "2.5\u20134.0%",
+      "notes": "OTW; valuation risk",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "COST",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Accumulate",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Buy",
+      "h60m": "Buy",
+      "conviction": "High",
+      "weight": "2.0\u20133.0%",
+      "notes": "OTW; quality compounder",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "V",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Buy",
+      "h60m": "Buy",
+      "conviction": "High",
+      "weight": "2.0\u20133.0%",
+      "notes": "OTW",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "WM",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Buy",
+      "h12m": "Buy",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med-High",
+      "weight": "1.5\u20132.5%",
+      "notes": "OTW",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "AAPL",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Accumulate",
+      "h24m": "Buy",
+      "h36m": "Buy",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "2.5\u20133.5%",
+      "notes": "OTW",
+      "overlap": false,
+      "primary": "Buy"
+    },
+    {
+      "ticker": "META",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Accumulate",
+      "h24m": "Accumulate",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "2.0\u20133.0%",
+      "notes": "OTW; FCF / funding debate",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "QCOM",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Hold",
+      "h6m": "Accumulate",
+      "h12m": "Accumulate",
+      "h24m": "Accumulate",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.5\u20132.5%",
+      "notes": "OTW #2",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "BLK",
+      "books": [
+        "OTW",
+        "OTW #2"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Accumulate",
+      "h24m": "Accumulate",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.5\u20132.5%",
+      "notes": "Overlap; own once",
+      "overlap": true,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "XOM",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Hold",
+      "h6m": "Accumulate",
+      "h12m": "Accumulate",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "2.0\u20133.0%",
+      "notes": "OTW #2; energy satellite",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "FCX",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Hold",
+      "h6m": "Accumulate",
+      "h12m": "Accumulate",
+      "h24m": "Accumulate",
+      "h36m": "Accumulate",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.5\u20132.5%",
+      "notes": "OTW #2; copper",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "TLN",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Accumulate",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.0\u20132.0%",
+      "notes": "OTW #2; power",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "TMO",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Accumulate",
+      "h24m": "Accumulate",
+      "h36m": "Accumulate",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.5\u20132.5%",
+      "notes": "OTW #2",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "ISRG",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Accumulate",
+      "h24m": "Accumulate",
+      "h36m": "Accumulate",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.5\u20132.5%",
+      "notes": "OTW; AI 4 but franchise",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "HD",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Hold",
+      "h24m": "Accumulate",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.5\u20132.5%",
+      "notes": "OTW; rate-sensitive",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "MRVL",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Accumulate",
+      "h6m": "Accumulate",
+      "h12m": "Accumulate",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.0\u20132.0%",
+      "notes": "OTW; high vol",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "FDX",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Accumulate",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.0\u20132.0%",
+      "notes": "OTW",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "DE",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Hold",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.0\u20132.0%",
+      "notes": "OTW",
+      "overlap": false,
+      "primary": "Hold"
+    },
+    {
+      "ticker": "MAR",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Hold",
+      "h24m": "Accumulate",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.0\u20132.0%",
+      "notes": "OTW",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "WPM",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Hold",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.0\u20132.0%",
+      "notes": "OTW; gold streamer",
+      "overlap": false,
+      "primary": "Hold"
+    },
+    {
+      "ticker": "TRGP",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Accumulate",
+      "h12m": "Accumulate",
+      "h24m": "Accumulate",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med",
+      "weight": "1.5\u20132.5%",
+      "notes": "OTW; midstream",
+      "overlap": false,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "TEVA",
+      "books": [
+        "OTW",
+        "OTW #2"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Accumulate",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Med-Low",
+      "weight": "1.0\u20131.5%",
+      "notes": "Overlap; own once",
+      "overlap": true,
+      "primary": "Accumulate"
+    },
+    {
+      "ticker": "SSNC",
+      "books": [
+        "OTW"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Hold",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Low-Med",
+      "weight": "0.5\u20131.5%",
+      "notes": "OTW; AI 4",
+      "overlap": false,
+      "primary": "Hold"
+    },
+    {
+      "ticker": "XLF",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Reduce",
+      "h6m": "Reduce",
+      "h12m": "Hold",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Low",
+      "weight": "0\u20131.0%",
+      "notes": "OTW #2; redundant vs bank stocks",
+      "overlap": false,
+      "primary": "Hold"
+    },
+    {
+      "ticker": "COIN",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Hold",
+      "h6m": "Hold",
+      "h12m": "Hold",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "Hold",
+      "h60m": "Hold",
+      "conviction": "Low",
+      "weight": "0\u20131.5%",
+      "notes": "OTW #2; speculative",
+      "overlap": false,
+      "primary": "Hold"
+    },
+    {
+      "ticker": "MP",
+      "books": [
+        "OTW",
+        "OTW #2"
+      ],
+      "h3m": "Avoid",
+      "h6m": "Avoid",
+      "h12m": "Hold",
+      "h24m": "Hold",
+      "h36m": "Hold",
+      "h48m": "\u2014",
+      "h60m": "\u2014",
+      "conviction": "Low",
+      "weight": "0\u20131.0%",
+      "notes": "Overlap; near lows",
+      "overlap": true,
+      "primary": "Hold"
+    },
+    {
+      "ticker": "NFLX",
+      "books": [
+        "OTW #2"
+      ],
+      "h3m": "Reduce",
+      "h6m": "Avoid",
+      "h12m": "Hold",
+      "h24m": "Watch",
+      "h36m": "Watch",
+      "h48m": "Watch",
+      "h60m": "Watch",
+      "conviction": "Low",
+      "weight": "0\u20131.0%",
+      "notes": "OTW #2; ad guide cut",
+      "overlap": false,
+      "primary": "Hold"
+    },
+    {
+      "ticker": "BSX",
+      "books": [
+        "OTW",
+        "OTW #2"
+      ],
+      "h3m": "Avoid",
+      "h6m": "Avoid",
+      "h12m": "Avoid",
+      "h24m": "Watch",
+      "h36m": "Watch",
+      "h48m": "\u2014",
+      "h60m": "\u2014",
+      "conviction": "Low",
+      "weight": "0%",
+      "notes": "Overlap; thesis broken",
+      "overlap": true,
+      "primary": "Watch"
+    }
+  ],
+  "takeaways": [
+    {
+      "book": "OTW",
+      "tagline": "Mega-cap / quality compounders (~+79%, 25 names)",
+      "summary": "Core platforms and banks: overweight NVDA (stagger into mid-Nov), JPM, GOOGL, MSFT, AMZN, COST, V. Acc META with FCF/funding caution. Size-cap MU/MRVL cycle risk. Avoid BSX; watch MP near lows. Own Mag7 and banks once across books."
+    },
+    {
+      "book": "OTW #2",
+      "tagline": "Satellite sleeve (~+6%, 15 names)",
+      "summary": "UNH is the standout Buy (AI 8). Prefer one Alphabet class (GOOG here vs GOOGL in OTW). Energy/copper satellites via XOM, FCX, TLN. Reduce XLF (redundant vs banks). Avoid NFLX after ad-guide cut; skip BSX."
+    }
+  ],
+  "page": "otw",
+  "books": [
+    "OTW",
+    "OTW #2"
+  ]
+}

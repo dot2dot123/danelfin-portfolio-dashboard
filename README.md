@@ -1,22 +1,31 @@
-# Danelfin Multi-Portfolio Dashboard
+# Danelfin Portfolio Dashboards
 
-Personal investment research dashboard for **Gary Aires** across Danelfin books:
+Personal investment research dashboards for **Gary Aires**.
 
-- **OTW** / **OTW #2** / **Jette** / **SWB** (watchlists)
-- **NEW** (live ~$4.71K book)
+## Live links (share these)
 
-## Live site
+| View | URL |
+|------|-----|
+| Hub | https://dot2dot123.github.io/danelfin-portfolio-dashboard/ |
+| OTW & OTW #2 | https://dot2dot123.github.io/danelfin-portfolio-dashboard/otw/ |
+| SWB | https://dot2dot123.github.io/danelfin-portfolio-dashboard/swb/ |
+| NEW & Jette | https://dot2dot123.github.io/danelfin-portfolio-dashboard/new-jette/ |
 
-https://dot2dot123.github.io/danelfin-portfolio-dashboard/
+## Data layout (weekly refresh)
 
-## Data
+Overwrite these without rewriting HTML:
 
-| File | Purpose |
-|------|---------|
-| `data/actions.json` | Action rows + exec takeaways (overwrite on weekly refresh) |
-| `data/meta.json` | `asOf`, risk profile, portfolio index |
+| File | Contents |
+|------|----------|
+| `data/otw-actions.json` | OTW + OTW #2 rows + takeaways |
+| `data/swb-actions.json` | SWB only |
+| `data/new-jette-actions.json` | NEW + Jette |
+| `data/meta.json` | Shared as-of / portfolio index |
+| `data/actions.json` | Optional full combined snapshot |
 
-Static HTML/CSS/JS only — no login required. Optional client-side Yahoo Finance quotes fail soft if blocked.
+Shared UI: `assets/app.js`, `assets/styles.css`. Each page folder has only `index.html` + `window.DASHBOARD_CONFIG`.
+
+Static HTML/CSS/JS — no login. Optional client-side Yahoo Finance quotes fail soft if blocked.
 
 ## Disclaimer
 

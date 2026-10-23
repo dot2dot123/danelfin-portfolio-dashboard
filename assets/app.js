@@ -1,4 +1,15 @@
 (() => {
+  const cfg = Object.assign(
+    {
+      actionsUrl: "data/actions.json",
+      metaUrl: "data/meta.json",
+      csvName: "actions.csv",
+      bookOptions: null, // null = derive from data
+      hideBookFilter: false,
+    },
+    window.DASHBOARD_CONFIG || {}
+  );
+
   const state = {
     actions: [],
     takeaways: [],
@@ -6,21 +17,26 @@
     quotes: {},
     sortKey: "ticker",
     sortDir: 1,
+    pageBooks: [],
   };
 
   const $ = (id) => document.getElementById(id);
 
   async function load() {
     const [actionsRes, metaRes] = await Promise.all([
-      fetch("data/actions.json"),
-      fetch("data/meta.json"),
+      fetch(cfg.actionsUrl),
+      fetch(cfg.metaUrl),
     ]);
+    if (!actionsRes.ok) throw new Error(`actions ${actionsRes.status}`);
+    if (!metaRes.ok) throw new Error(`meta ${metaRes.status}`);
     const actionsData = await actionsRes.json();
     state.actions = actionsData.actions || [];
     state.takeaways = actionsData.takeaways || [];
+    state.pageBooks = actionsData.books || cfg.bookOptions || [];
     state.meta = await metaRes.json();
 
     $("asOf").textContent = `As of ${state.meta.asOfLabel || state.meta.asOf}`;
+    buildBookFilter();
     renderTakeaways();
     bindControls();
     render();
@@ -29,8 +45,36 @@
     });
   }
 
+  function buildBookFilter() {
+    const sel = $("bookFilter");
+    if (!sel) return;
+    const books =
+      (cfg.bookOptions && cfg.bookOptions.length
+        ? cfg.bookOptions
+        : state.pageBooks.length
+          ? state.pageBooks
+          : [...new Set(state.actions.flatMap((a) => a.books || []))]).slice();
+
+    if (cfg.hideBookFilter || books.length <= 1) {
+      const wrap = sel.closest(".control");
+      if (wrap) wrap.hidden = true;
+      sel.innerHTML = `<option value="all">All</option>`;
+      return;
+    }
+
+    sel.innerHTML =
+      `<option value="all">All on this page</option>` +
+      books
+        .map((b) => {
+          const label = b === "NEW" ? "NEW (live)" : b;
+          return `<option value="${escapeAttr(b)}">${escapeHtml(label)}</option>`;
+        })
+        .join("");
+  }
+
   function renderTakeaways() {
     const el = $("takeaways");
+    if (!el) return;
     el.innerHTML = state.takeaways
       .map(
         (t) => `
@@ -45,19 +89,27 @@
 
   function bindControls() {
     ["bookFilter", "actionFilter", "horizonFilter", "search"].forEach((id) => {
-      $(id).addEventListener("input", render);
-      $(id).addEventListener("change", render);
+      const el = $(id);
+      if (!el) return;
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
     });
-    $("refreshQuotes").addEventListener("click", () => {
-      $("quoteStatus").textContent = "Quotes: refreshing…";
-      fetchQuotes().catch(() => {
-        $("quoteStatus").textContent = "Quotes: unavailable";
+    const rq = $("refreshQuotes");
+    if (rq) {
+      rq.addEventListener("click", () => {
+        $("quoteStatus").textContent = "Quotes: refreshing…";
+        fetchQuotes().catch(() => {
+          $("quoteStatus").textContent = "Quotes: unavailable";
+        });
       });
-    });
-    $("downloadCsv").addEventListener("click", (e) => {
-      e.preventDefault();
-      downloadCsv();
-    });
+    }
+    const dl = $("downloadCsv");
+    if (dl) {
+      dl.addEventListener("click", (e) => {
+        e.preventDefault();
+        downloadCsv();
+      });
+    }
     document.querySelectorAll("th[data-sort]").forEach((th) => {
       th.addEventListener("click", () => {
         const key = th.getAttribute("data-sort");
@@ -78,7 +130,8 @@
   }
 
   function filtered() {
-    const book = $("bookFilter").value;
+    const bookEl = $("bookFilter");
+    const book = bookEl ? bookEl.value : "all";
     const action = $("actionFilter").value;
     const q = ($("search").value || "").trim().toLowerCase();
 
@@ -86,10 +139,10 @@
       if (book !== "all" && !(row.books || []).includes(book)) return false;
       const focus = focusAction(row);
       if (action === "Overlap") {
-        if (!row.overlap && !(row.notes || "").toLowerCase().includes("overlap")) return false;
+        if (!row.overlap && !(row.notes || "").toLowerCase().includes("overlap"))
+          return false;
       } else if (action !== "all") {
         if (focus !== action && row.primary !== action) {
-          // also match if any priority horizon equals action when blend selected
           if ($("horizonFilter").value === "primary") {
             const hit = ["h6m", "h12m", "h24m", "h36m"].some((k) => row[k] === action);
             if (!hit) return false;
@@ -197,7 +250,7 @@
   }
   function fmtPrice(p) {
     if (p == null || Number.isNaN(p)) return "—";
-    return p >= 100 ? `$${p.toFixed(2)}` : `$${p.toFixed(2)}`;
+    return `$${p.toFixed(2)}`;
   }
   function fmtPct(p) {
     if (p == null || Number.isNaN(p)) return "";
@@ -211,10 +264,12 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
   }
+  function escapeAttr(s) {
+    return escapeHtml(s);
+  }
 
   async function fetchQuotes() {
     const tickers = [...new Set(state.actions.map((a) => a.ticker))];
-    // Yahoo unofficial chart API — batch in chunks of 10 via Promise.allSettled
     const chunks = [];
     for (let i = 0; i < tickers.length; i += 8) chunks.push(tickers.slice(i, i + 8));
 
@@ -285,7 +340,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "danelfin-actions.csv";
+    a.download = cfg.csvName || "actions.csv";
     a.click();
     URL.revokeObjectURL(url);
   }
