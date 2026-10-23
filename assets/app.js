@@ -23,19 +23,30 @@
   const $ = (id) => document.getElementById(id);
 
   async function load() {
-    const [actionsRes, metaRes] = await Promise.all([
-      fetch(cfg.actionsUrl),
-      fetch(cfg.metaUrl),
-    ]);
-    if (!actionsRes.ok) throw new Error(`actions ${actionsRes.status}`);
-    if (!metaRes.ok) throw new Error(`meta ${metaRes.status}`);
-    const actionsData = await actionsRes.json();
+    let actionsData;
+    let meta;
+
+    const embedded = window.DASHBOARD_EMBEDDED;
+    if (embedded && (embedded.actionsData || embedded.actions)) {
+      actionsData = embedded.actionsData || embedded;
+      meta = embedded.meta || {};
+    } else {
+      const [actionsRes, metaRes] = await Promise.all([
+        fetch(cfg.actionsUrl),
+        fetch(cfg.metaUrl),
+      ]);
+      if (!actionsRes.ok) throw new Error(`actions ${actionsRes.status}`);
+      if (!metaRes.ok) throw new Error(`meta ${metaRes.status}`);
+      actionsData = await actionsRes.json();
+      meta = await metaRes.json();
+    }
+
     state.actions = actionsData.actions || [];
     state.takeaways = actionsData.takeaways || [];
     state.pageBooks = actionsData.books || cfg.bookOptions || [];
-    state.meta = await metaRes.json();
+    state.meta = meta;
 
-    $("asOf").textContent = `As of ${state.meta.asOfLabel || state.meta.asOf}`;
+    $("asOf").textContent = `As of ${state.meta.asOfLabel || state.meta.asOf || "—"}`;
     buildBookFilter();
     renderTakeaways();
     bindControls();

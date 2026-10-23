@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Danelfin Dashboards — Gary A</title>
+  <meta name="description" content="Personal Danelfin multi-horizon research dashboards for Gary A." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .hub-card {
+      display: block;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.3rem;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: border-color .15s, transform .15s;
+    }
+    .hub-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .hub-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+    .hub-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .hub-card .linkish {
+      margin-top: 0.85rem;
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div>
+        <p class="eyebrow">Gary A · Personal research</p>
+        <h1>Danelfin Portfolio Dashboards</h1>
+        <p class="subtitle">Three shareable views — Medium risk · Priority horizons 6 / 12 / 24 / 36 months</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hub-grid" aria-label="Dashboard links">
+      <a class="hub-card" href="otw/">
+        <h2>OTW &amp; OTW #2</h2>
+        <p>Core + satellite watchlists. Filter by book, action, and horizon; overlap rows flagged.</p>
+        <div class="linkish">Open dashboard →</div>
+      </a>
+      <a class="hub-card" href="swb/">
+        <h2>SWB</h2>
+        <p>Standalone SWB watchlist with multi-horizon actions and CSV download.</p>
+        <div class="linkish">Open dashboard →</div>
+      </a>
+      <a class="hub-card" href="new-jette/">
+        <h2>NEW &amp; Jette</h2>
+        <p>Live NEW book plus Jette factory sleeve — takeaways and filterable table.</p>
+        <div class="linkish">Open dashboard →</div>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Disclaimer:</strong> Research support only — not personalized investment advice. Verify live quotes, position sizes, and tax lots before trading.</p>
+    <p class="muted">Hosted on GitHub Pages. Pages are password-protected; weekly refresh rebuilds encrypted HTML.</p>
+  </footer>
+</body>
+</html>

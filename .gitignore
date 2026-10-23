@@ -1,0 +1,13 @@
+# Cleartext recommendation data — build input only (never publish plaintext)
+src/data/
+build/
+
+# Local env / secrets must never land in the repo
+.env
+.env.*
+**/secrets/
+agent-data/secrets/
+
+# npm
+node_modules/
+package-lock.json

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEW &amp; Jette — Danelfin Dashboard · Gary A</title>
+  <meta name="description" content="Personal multi-horizon equity research dashboard: NEW &amp; Jette." />
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div>
+        <p class="eyebrow"><a href="../">All dashboards</a> · Gary A · Personal research</p>
+        <h1>NEW &amp; Jette</h1>
+        <p class="subtitle">NEW (live) · Jette — Medium risk · Priority horizons 6 / 12 / 24 / 36 months</p>
+      </div>
+      <div class="header-meta">
+        <div class="asof" id="asOf">As of —</div>
+        <div class="quote-status" id="quoteStatus">Quotes: loading…</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="takeaways" id="takeaways" aria-label="Executive takeaways"></section>
+
+    <section class="controls" aria-label="Filters">
+      <div class="control">
+        <label for="bookFilter">Portfolio</label>
+        <select id="bookFilter">
+          <option value="all">All on this page</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="actionFilter">Action</label>
+        <select id="actionFilter">
+          <option value="all">All actions</option>
+          <option value="Buy">Buy</option>
+          <option value="Accumulate">Accumulate</option>
+          <option value="Hold">Hold</option>
+          <option value="Reduce">Reduce</option>
+          <option value="Watch">Watch</option>
+          <option value="Avoid">Avoid</option>
+          <option value="Overlap">Overlap only</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="horizonFilter">Focus horizon</label>
+        <select id="horizonFilter">
+          <option value="primary">Priority blend (6–36m)</option>
+          <option value="h6m">6 months</option>
+          <option value="h12m">12 months</option>
+          <option value="h24m">24 months</option>
+          <option value="h36m">36 months</option>
+          <option value="h3m">3 months</option>
+        </select>
+      </div>
+      <div class="control grow">
+        <label for="search">Search</label>
+        <input id="search" type="search" placeholder="Ticker or notes…" autocomplete="off" />
+      </div>
+      <div class="control actions-row">
+        <button type="button" id="refreshQuotes" class="btn secondary">Refresh quotes</button>
+        <a class="btn secondary" id="downloadCsv" href="#" download="new-jette-actions.csv">Download CSV</a>
+      </div>
+    </section>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="table-wrap">
+      <table id="actionsTable">
+        <thead>
+          <tr>
+            <th data-sort="ticker">Ticker</th>
+            <th data-sort="books">Books</th>
+            <th data-sort="focus">Focus</th>
+            <th data-sort="h6m">6m</th>
+            <th data-sort="h12m">12m</th>
+            <th data-sort="h24m">24m</th>
+            <th data-sort="h36m">36m</th>
+            <th data-sort="conviction">Conv.</th>
+            <th data-sort="weight">Weight</th>
+            <th data-sort="price">Last</th>
+            <th data-sort="notes">Notes</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <p class="empty" id="empty" hidden>No rows match these filters.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Disclaimer:</strong> Research support only — not personalized investment advice. Verify live quotes, position sizes, and tax lots before trading. Past performance and AI scores are not guarantees of future results.</p>
+    <p class="muted">Quotes via Yahoo Finance (unofficial; may fail soft). Data is embedded in this encrypted page. <a href="../">All dashboards</a></p>
+  </footer>
+
+  <script>
+    window.DASHBOARD_CONFIG = {
+      actionsUrl: "../data/new-jette-actions.json",
+      metaUrl: "../data/meta.json",
+      csvName: "new-jette-actions.csv",
+      bookOptions: ["NEW", "Jette"],
+      hideBookFilter: false,
+    };
+  </script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

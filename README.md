@@ -1,6 +1,8 @@
 # Danelfin Portfolio Dashboards
 
-Personal investment research dashboards for **Gary Aires**.
+Personal investment research dashboards for **Gary A**.
+
+Pages are **password-protected** (StatiCrypt / AES-256). Viewers enter the shared password once per page (optional “Remember for 14 days”).
 
 ## Live links (share these)
 
@@ -11,21 +13,26 @@ Personal investment research dashboards for **Gary Aires**.
 | SWB | https://dot2dot123.github.io/danelfin-portfolio-dashboard/swb/ |
 | NEW & Jette | https://dot2dot123.github.io/danelfin-portfolio-dashboard/new-jette/ |
 
-## Data layout (weekly refresh)
+## How publishing works
 
-Overwrite these without rewriting HTML:
+1. Weekly refresh writes cleartext JSON into **`src/data/`** (gitignored — not on GitHub Pages).
+2. `scripts/encrypt-pages.sh` embeds each page’s actions + meta into HTML, then encrypts with StatiCrypt.
+3. Only encrypted HTML is published on `main`. Public `data/` holds a stub README only — **no plaintext recommendation JSON**.
 
-| File | Contents |
-|------|----------|
-| `data/otw-actions.json` | OTW + OTW #2 rows + takeaways |
-| `data/swb-actions.json` | SWB only |
-| `data/new-jette-actions.json` | NEW + Jette |
-| `data/meta.json` | Shared as-of / portfolio index |
-| `data/actions.json` | Optional full combined snapshot |
+Shared UI (no recommendations): `assets/app.js`, `assets/styles.css`.  
+Cleartext HTML templates: `src/templates/`.
 
-Shared UI: `assets/app.js`, `assets/styles.css`. Each page folder has only `index.html` + `window.DASHBOARD_CONFIG`.
+### Rebuild / re-encrypt (bot box)
 
-Static HTML/CSS/JS — no login. Optional client-side Yahoo Finance quotes fail soft if blocked.
+Password file (bot box only): `/home/box/agent-data/secrets/danelfin-dashboard-password`
+
+```bash
+# After updating src/data/*.json:
+./scripts/encrypt-pages.sh
+git add -A && git commit -m "…" && git push origin main
+```
+
+The script reads the password from that file (or `DANELFIN_DASHBOARD_PASSWORD_FILE`). It never hardcodes the password.
 
 ## Disclaimer
 
