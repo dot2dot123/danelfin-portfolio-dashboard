@@ -50,9 +50,10 @@
     buildBookFilter();
     renderTakeaways();
     bindControls();
+    $("quoteStatus").textContent = `Prices: ${embeddedLabel()}`;
     render();
     fetchQuotes().catch(() => {
-      $("quoteStatus").textContent = "Quotes: unavailable (showing embedded recs)";
+      $("quoteStatus").textContent = `Prices: ${embeddedLabel()} (live refresh unavailable)`;
     });
   }
 
@@ -110,7 +111,7 @@
       rq.addEventListener("click", () => {
         $("quoteStatus").textContent = "Quotes: refreshing…";
         fetchQuotes().catch(() => {
-          $("quoteStatus").textContent = "Quotes: unavailable";
+          $("quoteStatus").textContent = `Prices: ${embeddedLabel()} (live refresh unavailable)`;
         });
       });
     }
@@ -188,8 +189,8 @@
         av = convRank[a.conviction] || 0;
         bv = convRank[b.conviction] || 0;
       } else if (key === "price") {
-        av = state.quotes[a.ticker]?.price ?? -1;
-        bv = state.quotes[b.ticker]?.price ?? -1;
+        av = quoteFor(a)?.price ?? -1;
+        bv = quoteFor(b)?.price ?? -1;
       } else if (["h6m", "h12m", "h24m", "h36m"].includes(key)) {
         av = actRank[a[key]] || 0;
         bv = actRank[b[key]] || 0;
@@ -226,9 +227,9 @@
     tbody.innerHTML = rows
       .map((row) => {
         const focus = focusAction(row);
-        const q = state.quotes[row.ticker];
+        const q = quoteFor(row);
         const priceCell = q
-          ? `<span class="price">${fmtPrice(q.price)}<span class="chg ${q.changePct >= 0 ? "up" : "down"}">${fmtPct(q.changePct)}</span></span>`
+          ? `<span class="price" title="${escapeAttr(q.live ? "Live (Yahoo)" : "As of " + (row.priceAsOf || "embedded"))}">${fmtPrice(q.price)}<span class="chg ${q.changePct >= 0 ? "up" : "down"}">${fmtPct(q.changePct)}</span></span>`
           : `<span class="price muted">—</span>`;
         const books = (row.books || [])
           .map((b) => `<span class="chip${b === "NEW" ? " new" : ""}">${escapeHtml(b)}</span>`)
@@ -258,6 +259,17 @@
   function short(a) {
     if (a === "Accumulate") return "Acc";
     return a || "—";
+  }
+  function quoteFor(row) {
+    const live = state.quotes[row.ticker];
+    if (live) return { ...live, live: true };
+    if (typeof row.price === "number") {
+      return { price: row.price, changePct: row.changePct, live: false };
+    }
+    return null;
+  }
+  function embeddedLabel() {
+    return state.meta?.pricesAsOfLabel || state.meta?.pricesAsOf || "embedded";
   }
   function fmtPrice(p) {
     if (p == null || Number.isNaN(p)) return "—";
@@ -312,7 +324,7 @@
     if (ok > 0) {
       $("quoteStatus").textContent = `Quotes: ${ok}/${tickers.length} live (Yahoo)`;
     } else {
-      $("quoteStatus").textContent = "Quotes: blocked or unavailable — recs still shown";
+      $("quoteStatus").textContent = `Prices: ${embeddedLabel()} (live refresh blocked)`;
     }
     render();
   }
@@ -329,6 +341,9 @@
       "36m",
       "Conviction",
       "Suggested Weight",
+      "Price",
+      "Day Chg %",
+      "Price As Of",
       "Notes",
     ];
     const lines = [headers.join(",")];
@@ -343,6 +358,9 @@
         r.h36m,
         r.conviction,
         r.weight,
+        quoteFor(r)?.price ?? "",
+        quoteFor(r)?.changePct ?? "",
+        state.quotes[r.ticker] ? "live" : r.priceAsOf || "",
         r.notes,
       ].map(csvEscape);
       lines.push(cols.join(","));
