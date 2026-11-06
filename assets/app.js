@@ -291,6 +291,33 @@
     return escapeHtml(s);
   }
 
+  function yahooChartUrl(sym) {
+    return `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?interval=1d&range=2d`;
+  }
+
+  async function fetchYahooChartJson(sym) {
+    const direct = yahooChartUrl(sym);
+    // GitHub Pages browsers are CORS-blocked from Yahoo; try direct first, then a CORS proxy.
+    const candidates = [
+      direct,
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(direct)}`,
+    ];
+    let lastErr;
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(String(res.status));
+        const data = await res.json();
+        const meta = data?.chart?.result?.[0]?.meta;
+        if (!meta || meta.regularMarketPrice == null) throw new Error("no meta");
+        return meta;
+      } catch (err) {
+        lastErr = err;
+      }
+    }
+    throw lastErr || new Error("quote failed");
+  }
+
   async function fetchQuotes() {
     const tickers = [...new Set(state.actions.map((a) => a.ticker))];
     const chunks = [];
@@ -302,12 +329,7 @@
         await Promise.all(
           chunk.map(async (sym) => {
             try {
-              const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?interval=1d&range=2d`;
-              const res = await fetch(url);
-              if (!res.ok) throw new Error(String(res.status));
-              const data = await res.json();
-              const meta = data?.chart?.result?.[0]?.meta;
-              if (!meta || meta.regularMarketPrice == null) throw new Error("no meta");
+              const meta = await fetchYahooChartJson(sym);
               const price = meta.regularMarketPrice;
               const prev = meta.chartPreviousClose ?? meta.previousClose ?? price;
               const changePct = prev ? ((price - prev) / prev) * 100 : 0;
